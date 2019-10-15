@@ -16,16 +16,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-<%#	Returns a string of all validator annotations for the entity relationships. -%>
-<%
-const relationship = relationships[idx];
-let result = '';
-if (relationship.relationshipValidate === true) {
-    const validators = [];
-    if (relationship.relationshipRequired) {
-        validators.push('@NotNull');
-    }
-    result =  validators.join('\n    ');
-    result += '\n';
-} -%>
-<%- result -%>
+package <%=packageName%>.domain.enumeration;
+
+/**
+ * The <%= enumName %> enumeration.
+ */
+public enum <%= enumName %> {
+    <%= enumValues %>
+}

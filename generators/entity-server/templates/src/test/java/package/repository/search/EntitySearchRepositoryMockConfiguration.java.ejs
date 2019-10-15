@@ -16,16 +16,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-<%#	Returns a string of all validator annotations for the entity relationships. -%>
-<%
-const relationship = relationships[idx];
-let result = '';
-if (relationship.relationshipValidate === true) {
-    const validators = [];
-    if (relationship.relationshipRequired) {
-        validators.push('@NotNull');
-    }
-    result =  validators.join('\n    ');
-    result += '\n';
-} -%>
-<%- result -%>
+package <%=packageName%>.repository.search;
+
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * Configure a Mock version of {@link <%= entityClass %>SearchRepository} to test the
+ * application without starting Elasticsearch.
+ */
+@Configuration
+public class <%=entityClass%>SearchRepositoryMockConfiguration {
+
+    @MockBean
+    private <%= entityClass %>SearchRepository mock<%= entityClass %>SearchRepository;
+
+}
